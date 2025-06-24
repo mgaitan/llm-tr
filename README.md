@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/llm-tr.svg)](https://pypi.org/project/llm-tr/)
 [![Changelog](https://img.shields.io/github/v/release/mgaitan/llm-tr?include_prereleases&label=changelog)](https://github.com/mgaitan/llm-tr/releases)
-[![Tests](https://github.com/mgaitan/llm-tr/actions/workflows/test.yml/badge.svg)](https://github.com/mgaitan/llm-tr/actions/workflows/test.yml)
+[![Tests](https://github.com/mgaitan/llm-tr/actions/workflows/ci.yml/badge.svg)](https://github.com/mgaitan/llm-tr/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/mgaitan/llm-tr/blob/main/LICENSE)
 
 **llm-tr** is a plugin for [LLM](https://llm.datasette.io/) that lets you translate text directly from your terminal using your favorite large language model. It automatically detects the source language and translates to your preferred language, with smart fallbacks and clipboard integration.
