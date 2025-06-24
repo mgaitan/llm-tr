@@ -5,6 +5,7 @@ import itertools
 import click
 import llm
 from llm.cli import get_default_model
+
 try:
     import pyclip
 except ImportError:
@@ -83,6 +84,7 @@ def validate_language(ctx, param, value) -> str:
         f"Invalid language: '{value}'. Must be one of: {', '.join(itertools.chain.from_iterable(lang_map.items()))}"
     )
 
+
 def get_paste() -> str:
     if pyclip:
         try:
@@ -90,7 +92,10 @@ def get_paste() -> str:
         except pyclip.ClipboardSetupException:
             raise click.BadParameter("Failed to paste text from clipboard")
     else:
-        raise click.BadParameter("pyclip not installed. Reinstall: llm install llm-tr[pyclip]")
+        raise click.BadParameter(
+            "pyclip not installed. Reinstall: llm install llm-tr[pyclip]"
+        )
+
 
 @llm.hookimpl
 def register_commands(cli):
