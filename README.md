@@ -50,7 +50,7 @@ llm-tr determines your target translation language using the following priority:
      ```
    - Or set the `LLM_TR_LANGUAGE` environment variable:
      ```bash
-     export LLM_TRANS_LANGUAGE=spanish
+     export LLM_TR_LANGUAGE=spanish
 
      ```
 
@@ -66,12 +66,12 @@ llm-tr determines your target translation language using the following priority:
 
 - Translate to French explicitly:
   ```bash
-  llm tr -l french Hello world
+  llm tr -l french ¡Viva Perón y que mueran los gorilas!
   ```
-- Use environment variable for Spanish:
+- Use environment variable for Spanish and quote the input
   ```bash
-  export LLM_TRANS_LANGUAGE=spanish
-  llm tr Bonjour tout le monde
+  export LLM_TR_LANGUAGE=spanish
+  llm tr "Proletarier aller Länder, vereinigt euch!"
   ```
 - Let the system locale decide (e.g., if your system is set to German):
   ```bash
