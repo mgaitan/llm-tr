@@ -6,14 +6,14 @@ readme = "README.md"
 authors = [{ name = "Martín Gaitán" }]
 license = { text = "Apache-2.0" }
 classifiers = ["License :: OSI Approved :: Apache Software License"]
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 dependencies = ["llm"]
 
 [project.urls]
 Homepage = "https://github.com/mgaitan/llm-tr"
 Changelog = "https://github.com/mgaitan/llm-tr/releases"
 Issues = "https://github.com/mgaitan/llm-tr/issues"
-CI = "https://github.com/mgaitan/llm-tr/actions"
+CI = "https://github.com/mgaitan/llm-tr/actions/workflows/ci.yml"
 
 [project.entry-points.llm]
 tr = "llm_tr"
