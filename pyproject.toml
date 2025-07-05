@@ -22,5 +22,10 @@ tr = "llm_tr"
 test = ["pytest"]
 
 [dependency-groups]
-dev = ["ipdb>=0.13.13", "ipython>=9.3.0", "pytest>=8.4.1", "ruff>=0.12.0"]
+dev = [
+    "ipdb>=0.13.13",
+    "ipython>=8.37.0",
+    "pytest>=8.4.1",
+    "ruff>=0.12.0",
+]
 pyclip = ["pyclip>=0.7.0"]
