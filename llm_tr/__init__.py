@@ -78,26 +78,11 @@ def validate_language(ctx, param, value) -> str:
     # Check if it's a key in lang_map
     if val in lang_map:
         return lang_map[val]
-    if val in lang_map.values():
+    elif val in lang_map.values():
         return val
-    raise click.BadParameter(
-        f"Invalid language: '{value}'. Must be one of: {', '.join(itertools.chain.from_iterable(lang_map.items()))}"
-    )
+    raise click.BadParameter(f"Invalid language '{value}'")
 
 
-def get_paste() -> str:
-    if pyclip:
-        try:
-            return pyclip.paste()
-        except pyclip.ClipboardSetupException:
-            raise click.BadParameter("Failed to paste text from clipboard")
-    else:
-        raise click.BadParameter(
-            "pyclip not installed. Reinstall: llm install llm-tr[pyclip]"
-        )
-
-
-@llm.hookimpl
 def register_commands(cli):
     @cli.command()
     @click.argument("args", nargs=-1)

@@ -9,6 +9,14 @@ classifiers = ["License :: OSI Approved :: Apache Software License"]
 requires-python = ">=3.10"
 dependencies = ["llm"]
 
+[build-system]
+requires = ["uv_build>=0.7.19,<0.8"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "llm_tr"
+module-root = ""
+
 [project.urls]
 Homepage = "https://github.com/mgaitan/llm-tr"
 Changelog = "https://github.com/mgaitan/llm-tr/releases"
@@ -26,6 +34,7 @@ dev = [
     "ipdb>=0.13.13",
     "ipython>=8.37.0",
     "pytest>=8.4.1",
+    "pytest-mock>=3.14.1",
     "ruff>=0.12.0",
 ]
 pyclip = ["pyclip>=0.7.0"]
