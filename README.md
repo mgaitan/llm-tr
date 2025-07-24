@@ -33,11 +33,34 @@ Translate any text from your terminal:
 llm tr Hola mundo
 ```
 
+Or translate the contents of a file:
+
+```bash
+llm tr document.txt
+```
+
 The plugin will:
-- Detect the source language of the input.
+- Detect the source language of the input (text or file content).
 - Translate to your preferred language (see below for how this is chosen).
 - Print the translation to stdout.
 - If installed with `[pyclip]`, copy the result to your clipboard automatically.
+
+### File Translation
+
+When you provide a single argument that is a valid file path, llm-tr will automatically read the file's content and translate it:
+
+```bash
+# Translate a text file
+llm tr readme.txt
+
+# Translate a markdown file
+llm tr documentation.md
+
+# Works with any text file
+llm tr script.py
+```
+
+If the file cannot be read (doesn't exist, permission issues, or binary file), the argument will be treated as regular text to translate.
 
 ## Preferred Language Logic
 
@@ -66,7 +89,7 @@ llm-tr determines your target translation language using the following priority:
 
 - Translate to French explicitly:
   ```bash
-  llm tr -l french ¡Viva Perón y que mueran los gorilas!
+  llm tr -l french ¡Viva Perón y que la chupen los gorilas!
   ```
 - Use environment variable for Spanish and quote the input
   ```bash
