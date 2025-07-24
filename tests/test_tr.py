@@ -1,6 +1,3 @@
-import os
-import tempfile
-
 import click
 import pytest
 
@@ -35,18 +32,14 @@ def test_get_paste_no_pyclip(mocker):
         get_paste()
 
 
-def test_read_file_content_existing_file():
+def test_read_file_content_existing_file(tmp_path):
     """Test reading content from an existing file."""
-    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.txt') as f:
-        test_content = "Hola mundo\nEste es un archivo de prueba."
-        f.write(test_content)
-        f.flush()
+    test_file = tmp_path / "test.txt"
+    test_content = "Hola mundo\nEste es un archivo de prueba."
+    test_file.write_text(test_content)
 
-        try:
-            result = read_file_content(f.name)
-            assert result == test_content
-        finally:
-            os.unlink(f.name)
+    result = read_file_content(str(test_file))
+    assert result == test_content
 
 
 def test_read_file_content_nonexistent_file():
@@ -55,11 +48,10 @@ def test_read_file_content_nonexistent_file():
     assert result is None
 
 
-def test_read_file_content_directory():
+def test_read_file_content_directory(tmp_path):
     """Test reading content when path is a directory."""
-    with tempfile.TemporaryDirectory() as temp_dir:
-        result = read_file_content(temp_dir)
-        assert result is None
+    result = read_file_content(str(tmp_path))
+    assert result is None
 
 
 def test_read_file_content_permission_error(mocker):
