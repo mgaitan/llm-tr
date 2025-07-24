@@ -1,9 +1,8 @@
-import os
 import locale
+import os
 
 import click
 import llm
-from llm import cli
 from llm.cli import get_default_model
 
 try:
@@ -85,7 +84,9 @@ def validate_language(ctx, param, value) -> str:
 
 def get_paste():
     if not pyclip:
-        raise click.ClickException("pyclip is not installed. reinstall: llm install llm-tr[pyclip]")
+        raise click.ClickException(
+            "pyclip is not installed. reinstall: llm install llm-tr[pyclip]"
+        )
     try:
         return pyclip.paste()
     except pyclip.ClipboardSetupException:
