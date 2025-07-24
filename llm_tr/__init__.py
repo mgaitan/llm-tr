@@ -4,6 +4,7 @@ from pathlib import Path
 
 import click
 import llm
+from llm import hookimpl
 from llm.cli import get_default_model
 
 try:
@@ -99,12 +100,13 @@ def read_file_content(file_path: str) -> str:
     try:
         path = Path(file_path)
         if path.is_file():
-            return path.read_text(encoding='utf-8')
+            return path.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError):
         pass
     return None
 
 
+@hookimpl
 def register_commands(cli):
     @cli.command()
     @click.argument("args", nargs=-1)

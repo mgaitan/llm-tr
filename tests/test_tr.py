@@ -56,7 +56,7 @@ def test_read_file_content_directory(tmp_path):
 
 def test_read_file_content_permission_error(mocker):
     """Test reading content when file has permission issues."""
-    mock_path = mocker.patch('llm_tr.Path')
+    mock_path = mocker.patch("llm_tr.Path")
     mock_path_instance = mock_path.return_value
     mock_path_instance.is_file.return_value = True
     mock_path_instance.read_text.side_effect = OSError("Permission denied")
@@ -67,10 +67,12 @@ def test_read_file_content_permission_error(mocker):
 
 def test_read_file_content_unicode_error(mocker):
     """Test reading content when file has encoding issues."""
-    mock_path = mocker.patch('llm_tr.Path')
+    mock_path = mocker.patch("llm_tr.Path")
     mock_path_instance = mock_path.return_value
     mock_path_instance.is_file.return_value = True
-    mock_path_instance.read_text.side_effect = UnicodeDecodeError('utf-8', b'', 0, 1, 'invalid start byte')
+    mock_path_instance.read_text.side_effect = UnicodeDecodeError(
+        "utf-8", b"", 0, 1, "invalid start byte"
+    )
 
     result = read_file_content("binary_file.bin")
     assert result is None
