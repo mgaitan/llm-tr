@@ -84,7 +84,7 @@ def validate_language(ctx, param, value) -> str:
 
 def get_paste():
     if not pyclip:
-        raise click.ClickException(
+        raise click.BadParameter(
             "pyclip is not installed. reinstall: llm install llm-tr[pyclip]"
         )
     try:

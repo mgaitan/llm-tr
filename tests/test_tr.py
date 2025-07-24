@@ -1,6 +1,7 @@
-import pytest
 import click
-from llm_tr import get_system_language_name, get_paste
+import pytest
+
+from llm_tr import get_paste, get_system_language_name
 
 
 def test_get_system_language_name_en_locale(mocker):
