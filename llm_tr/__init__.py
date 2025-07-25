@@ -1,8 +1,10 @@
 import locale
 import os
+from pathlib import Path
 
 import click
 import llm
+from llm import hookimpl
 from llm.cli import get_default_model
 
 try:
@@ -93,6 +95,18 @@ def get_paste():
         return None
 
 
+def read_file_content(file_path: str) -> str:
+    """Read content from file if it exists and is readable."""
+    try:
+        path = Path(file_path)
+        if path.is_file():
+            return path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        pass
+    return None
+
+
+@hookimpl
 def register_commands(cli):
     @cli.command()
     @click.argument("args", nargs=-1)
@@ -116,7 +130,18 @@ def register_commands(cli):
     )
     def tr(args, model, system, key, language, paste):
         """Translate the given text to one of your preferred languages"""
-        prompt = get_paste() if paste else " ".join(args)
+        if paste:
+            prompt = get_paste()
+        else:
+            # Check if the first argument is a valid file path
+            if len(args) == 1:
+                file_content = read_file_content(args[0])
+                if file_content is not None:
+                    prompt = file_content
+                else:
+                    prompt = " ".join(args)
+            else:
+                prompt = " ".join(args)
         model_id = model or get_default_model()
         model_obj = llm.get_model(model_id)
         if model_obj.needs_key:

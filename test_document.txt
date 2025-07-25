@@ -1,0 +1,11 @@
+Hola mundo! Este es un documento de prueba para demostrar la funcionalidad de traducción de archivos.
+
+Este plugin de LLM ahora puede traducir no solo texto directo desde la línea de comandos, sino también el contenido completo de archivos de texto.
+
+Características principales:
+- Detección automática del idioma fuente
+- Traducción a tu idioma preferido
+- Integración con el portapapeles
+- Soporte para múltiples formatos de archivo de texto
+
+¡Esperamos que esta nueva funcionalidad sea muy útil para traducir documentos completos de manera rápida y eficiente!
