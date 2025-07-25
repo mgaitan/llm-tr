@@ -1,6 +1,6 @@
 [project]
 name = "llm-tr"
-version = "0.2"
+version = "0.2.1"
 description = "Use LLM to translate in your shell"
 readme = "README.md"
 authors = [{ name = "Martín Gaitán" }]
